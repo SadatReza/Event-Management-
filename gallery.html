@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Dhaka Event Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Poppins', sans-serif; } </style>
+</head>
+<body class="bg-white">
+
+    <!-- Shared Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-gray-900">Event<span class="text-red-600">Planner</span></a>
+            <div class="hidden md:flex items-center space-x-8 font-medium text-gray-600">
+                <a href="index.html" class="hover:text-red-600">Home</a>
+                <a href="about.html" class="hover:text-red-600">About Us</a>
+                <a href="services.html" class="hover:text-red-600">Services</a>
+                <a href="gallery.html" class="text-red-600 font-bold">Gallery</a>
+                <a href="contact.html" class="hover:text-red-600">Contact</a>
+            </div>
+            <a href="#" class="hidden md:inline-block bg-red-600 text-white font-bold py-2 px-6 rounded-full hover:bg-red-700 transition duration-300">Get a Quote</a>
+            <div class="md:hidden"><button class="text-gray-800">☰</button></div>
+        </div>
+    </nav>
+
+    <!-- 1. Page Header -->
+    <header class="relative h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1974');">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold">Our Gallery</h1>
+            <p class="mt-2 text-lg">Home / Gallery</p>
+        </div>
+    </header>
+
+    <main class="py-20">
+        <div class="container mx-auto px-4">
+            <!-- Filter Buttons -->
+            <div class="flex justify-center space-x-2 md:space-x-4 mb-12">
+                <button class="bg-red-600 text-white font-semibold py-2 px-6 rounded-full">All</button>
+                <button class="bg-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-full hover:bg-red-600 hover:text-white">Weddings</button>
+                <button class="bg-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-full hover:bg-red-600 hover:text-white">Corporate</button>
+                <button class="bg-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-full hover:bg-red-600 hover:text-white">Parties</button>
+            </div>
+
+            <!-- Image Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Image Item 1 -->
+                <!-- THE FIX: Added h-80 to this container div -->
+                <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb02cf5d7?q=80&w=2070" alt="Wedding Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 2 -->
+                <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1561494265-0c74a5a73e6a?q=80&w=1974" alt="Corporate Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 3 -->
+                <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1974" alt="Party Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 4 -->
+                <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=1974" alt="Concert Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 5 -->
+                 <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1511578191439-44c311e8019c?q=80&w=2070" alt="Conference Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 6 -->
+                 <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1481026469463-66327c86e544?q=80&w=2094" alt="Dinner Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="container mx-auto px-4 py-16">
+            <!-- Footer content goes here... -->
+        </div>
+        <div class="bg-black text-gray-500 text-center py-4 text-sm">
+            <p>© 2024 EventPlanner. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
