@@ -144,3 +144,84 @@ $user_name = $is_logged_in ? $_SESSION['user_name'] : ''; // Get the username if
             </a>
         </div>
     </header>
+
+    <!-- About Us Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <div class="absolute -top-4 -left-4 w-full h-full bg-red-100 rounded-lg transform -rotate-3"></div>
+                <img src="https://images.squarespace-cdn.com/content/v1/550ef862e4b0ecb79919d4bb/1667072665606-ZDRLS3GFE2UFCBM7WG4Q/Events-2.png" alt="About Us Image" class="relative rounded-lg shadow-xl z-10">
+            </div>
+            <div>
+                <h2 class="text-sm font-bold uppercase text-red-600 tracking-wider">About Us</h2>
+                <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">25+ Years of Experience in Event Management</h3>
+                <p class="mt-4 text-gray-600">
+                    We are a team of passionate professionals dedicated to planning and executing flawless events. From corporate gatherings to dream weddings, we handle every detail with precision and creativity to bring your vision to life.
+                </p>
+                <a href="#" onclick="showPage('about-page')" class="mt-6 inline-block bg-gray-800 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-900 transition duration-300">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h2 class="text-sm font-bold uppercase text-red-600 tracking-wider">Our Services</h2>
+                <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">What We Provide</h3>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center transform transition duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="inline-block p-4 bg-red-100 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                    </div>
+                    <h4 class="mt-6 text-xl font-bold text-gray-900">Wedding Planning</h4>
+                    <p class="mt-2 text-gray-600 text-sm">Crafting your perfect day with elegance and style, ensuring every moment is memorable.</p>
+                    <a href="#" onclick="showPage('wedding-planning-page')" class="mt-4 inline-block text-red-600 font-medium hover:underline">Learn More</a>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center transform transition duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="inline-block p-4 bg-red-100 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                    </div>
+                    <h4 class="mt-6 text-xl font-bold text-gray-900">Corporate Events</h4>
+                    <p class="mt-2 text-gray-600 text-sm">Professional planning for conferences, product launches, and company meetings.</p>
+                    <a href="#" onclick="showPage('corporate-events-page')" class="mt-4 inline-block text-red-600 font-medium hover:underline">Learn More</a>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center transform transition duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="inline-block p-4 bg-red-100 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 6l12-3" /></svg>
+                    </div>
+                    <h4 class="mt-6 text-xl font-bold text-gray-900">Birthday Parties</h4>
+                    <p class="mt-2 text-gray-600 text-sm">Creating fun and exciting birthday celebrations for all ages, tailored to your theme.</p>
+                    <a href="#" onclick="showPage('birthday-parties-page')" class="mt-4 inline-block text-red-600 font-medium hover:underline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+    <!-- Login Page -->
+
+    <!-- Registration Page -->
+
+    <!-- Gallery Page -->
+
+    <!-- Wedding Planning Service Page -->
+
+    <!-- Corporate Events Service Page -->
+
+    <!-- Birthday Parties Service Page -->
+
+    <!-- Services Page -->
+
+    <!-- About Us Page -->
+
+    <!-- Contact Us Page -->
+
+    <!-- Booking Page -->
