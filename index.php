@@ -206,99 +206,252 @@ $user_name = $is_logged_in ? $_SESSION['user_name'] : ''; // Get the username if
     </section>
 </main>
 
-    <!-- Login Page -->
+<!-- Login Page -->
+    <main id="login-page">
+        <!-- Page Header -->
+        <header class="relative h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=2070');">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+                <h1 class="text-4xl md:text-5xl font-extrabold">Login</h1>
+                <p class="mt-2 text-lg">Home / Login</p>
+            </div>
+        </header>
 
-    <!-- Registration Page -->
-
-    <!-- Gallery Page -->
-
-    <!-- Wedding Planning Service Page -->
-
-    <!-- Corporate Events Service Page -->
-
-    <!-- Birthday Parties Service Page -->
-
-    <!-- Services Page -->
-
-    <!-- About Us Page -->
-
-    <!-- Contact Us Page -->
-                <main id="contact-page">
-    <!-- Page Header -->
-    <header class="relative h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1596524430615-b46475ddff6e?q=80&w=2070');">
-        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold">Contact Us</h1>
-            <p class="mt-2 text-lg">Home / Contact</p>
-        </div>
-    </header>
-
-    <section class="py-20">
-        <div class="container mx-auto px-4">
-            <!-- Display Success Message -->
-            <?php if (isset($_SESSION['success_message'])): ?>
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-                    <span class="block sm:inline"><?php echo $_SESSION['success_message']; ?></span>
-                </div>
-                <?php unset($_SESSION['success_message']); ?>
-            <?php endif; ?>
-
-            <!-- Display Error Messages -->
-            <?php if (isset($_SESSION['error_messages'])): ?>
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-                    <strong class="font-bold">Error!</strong>
-                    <ul class="mt-1">
-                        <?php foreach ($_SESSION['error_messages'] as $error): ?>
-                            <li class="block sm:inline"><?php echo $error; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-                <?php unset($_SESSION['error_messages']); ?>
-            <?php endif; ?>
-
-            <!-- Contact Form -->
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <form action="process_contact.php" method="POST">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500">
-                        <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500">
+        <!-- Login Form Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-4 max-w-md">
+                
+                <!-- Display error messages if any -->
+                <?php if (isset($_SESSION['error'])): ?>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <strong class="font-bold">Error!</strong>
+                        <span class="block sm:inline"><?php echo $_SESSION['error']; ?></span>
+                        <?php unset($_SESSION['error']); // Clear error after displaying ?>
                     </div>
-                    <div class="mt-6">
-                        <input type="text" name="subject" placeholder="Subject" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500">
+                <?php endif; ?>
+
+                <!-- Login Form -->
+                <form action="login.php" method="POST" class="space-y-6">
+                    <div>
+                        <label for="email" class="sr-only">Email Address</label>
+                        <input id="email" name="email" type="email" required class="w-full p-3 border border-gray-300 rounded-md" placeholder="Email Address">
                     </div>
-                    <div class="mt-6">
-                        <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input id="password" name="password" type="password" required class="w-full p-3 border border-gray-300 rounded-md" placeholder="Password">
                     </div>
-                    <div class="mt-6">
-                        <button type="submit" name="submit" class="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-md hover:bg-red-700 transition duration-300">
-                            Send Message
-                        </button>
+
+                    <div>
+                        <button type="submit" name="submit" class="w-full bg-blue-600 text-white p-3 rounded-md">Login</button>
                     </div>
                 </form>
-                <!-- Map Section -->
-            <div class="mt-20">
-                <h2 class="text-center text-3xl font-extrabold text-gray-900 mb-8">Find Us On The Map</h2>
-                
-                <!-- START: Google Maps Embed -->
-                <div class="rounded-lg shadow-md overflow-hidden">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.892161471373!2d90.4131610759881!3d23.78696088746533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7a097dcb989%3A0x4933339a68617865!2sEmbassy%20of%20the%20United%20States%20of%20America!5e0!3m2!1sen!2sbd!4v1701077591748!5m2!1sen!2sbd" 
-                        width="100%" 
-                        height="384" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-                <!-- END: Google Maps Embed -->
-                
+
             </div>
+        </section>
+    </main>
+
+            <!-- Login Button -->
         </div>
-            </div>
-        </div>
-    </section>
-</main>
+    </form>
+    <script>
+        // Function to handle the login submission
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Simulate a login (you would replace this with actual login logic)
+            setTimeout(() => {
+                // On successful login, change the button to a login logo (Google Chrome icon)
+                changeToLoginLogo();
+            }, 1000); // Simulating login delay
+        }
+
+        // Function to change the login button to a logo (Google Chrome icon)
+        function changeToLoginLogo() {
+            const loginButton = document.getElementById("login-button");
+
+            // Replace the login button text with an icon (Google Chrome-like icon)
+            loginButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-2.79 0-5-2.21-5-5s2.21-5 5-5 5 2.21 5 5-2.21 5-5 5zm-1-5h2v2h-2zm0-4h2v2h-2z" />
+                </svg>
+            `;
+            loginButton.classList.add("bg-gray-500", "cursor-not-allowed"); // Change style to indicate logged-in state
+            loginButton.disabled = true; // Disable the button after login
+        }
+    </script>
 
 
-    <!-- Booking Page -->
+
+    <!-- Navigation: Show login/logout buttons based on session state -->
+    <nav>
+        <div class="social-login-links">
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- User is logged in, show logout link -->
+                <a href="logout.php" class="hover:text-red-500">Logout (<?php echo $_SESSION['user_name']; ?>)</a>
+            <?php else: ?>
+                <!-- User is not logged in, show login/register links -->
+            <?php endif; ?>
+        </div>
+    </nav>
+
+<!-- Registration Page -->
+    <main id="register-page" class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-lg shadow-lg">
+            <div>
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                    Create a new account
+                </h2>
+                <p class="mt-2 text-center text-sm text-gray-600">
+                    Already have an account? <a href="#" onclick="showPage('login-page')" class="font-medium text-red-600 hover:text-red-500">Sign in here</a>
+                </p>
+            </div>
+    <form class="mt-8 space-y-6" action="index.php" method="POST">
+        <div class="rounded-md shadow-sm space-y-4">
+            <div>
+                <label for="full-name" class="sr-only">Full Name</label>
+                <input id="full-name" name="name" type="text" autocomplete="name" required
+                    class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm"
+                    placeholder="Full Name">
+            </div>
+            <div>
+                <label for="email-address" class="sr-only">Email address</label>
+                <input id="email-address" name="email" type="email" autocomplete="email" required
+                    class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm"
+                    placeholder="Email address">
+            </div>
+            <div>
+                <label for="phone" class="sr-only">Phone Number</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required
+                    class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm"
+                    placeholder="Phone Number">
+            </div>
+            <div>
+                <label for="password" class="sr-only">Password</label>
+                <input id="password" name="password" type="password" autocomplete="new-password" required
+                    class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm"
+                    placeholder="Password (min 8 characters)">
+            </div>
+            <div>
+                <label for="confirm-password" class="sr-only">Confirm Password</label>
+                <input id="confirm-password" name="confirm_password" type="password" required
+                    class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm"
+                    placeholder="Confirm Password">
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" name="submit"
+                class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                Register
+            </button>
+        </div>
+    </form>
+    <div class="text-center">
+                <button onclick="showPage('homepage')" class="mt-4 text-sm text-gray-600 hover:text-red-500">
+                    ← Back to home
+                </button>
+            </div>
+        </div>
+    </main>
+
+
+
+    <?php
+    require_once('database.php');
+
+    if (isset($_POST["submit"])) {
+        $fullname = $_POST["name"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $password = $_POST["password"];
+        $repeatpassword = $_POST["confirm_password"];
+        $error = array();
+
+        // Check for empty fields
+        if (empty($fullname)) {
+            array_push($error, "Full name is required");
+        }
+        if (empty($email)) {
+            array_push($error, "Email is required");
+        }
+        if (empty($phone)) {
+            array_push($error, "Phone number is required");
+        }
+        if (empty($password)) {
+            array_push($error, "Password is required");
+        }
+        if (empty($repeatpassword)) {
+            array_push($error, "Confirm password is required");
+        }
+
+        // Validate email format
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            array_push($error, "Enter a valid email address");
+        }
+
+        // Validate phone number (must be 11 digits and only numbers)
+        if (strlen($phone) != 11 || !preg_match('/^[0-9]+$/', $phone)) {
+            array_push($error, "Enter a valid 11-digit phone number");
+        }
+
+        // Check password length
+        if (strlen($password) < 8) {
+            array_push($error, "Password must be at least 8 characters long");
+        }
+
+        // Check if passwords match
+        if ($password !== $repeatpassword) {
+            array_push($error, "Passwords do not match");
+        }
+        
+
+        // Check if email already exists
+        $sql = "SELECT * FROM users WHERE email='$email'";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            array_push($error, "Email already exists");
+        }
+
+        // Show errors if any
+        if (count($error) > 0) {
+            foreach ($error as $err) {
+                echo "<div class='text-red-600 font-medium text-sm mb-2'>$err</div>";
+            }
+        } else {
+            // Hash the password before storing
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            
+            // Insert user into database
+            $sql1 = "INSERT INTO users (email, name, phone,password, created_at)
+                    VALUES ('$email', '$fullname', '$phone','$hashed_password', NOW())";
+
+            if (mysqli_query($conn, $sql1)) {
+                echo "<div class='text-green-600 font-medium text-sm mb-2'>You are registered successfully</div>";
+                // Redirect to login page after successful registration
+                echo "<script>setTimeout(function(){ showPage('login-page'); }, 2000);</script>";
+            } else {
+                echo "<div class='text-red-600 font-medium text-sm mb-2'>Error: " . mysqli_error($conn) . "</div>";
+            }
+        }
+        
+        // Close connection
+        mysqli_close($conn);
+    }
+    ?>
+
+
+<!-- Gallery Page -->
+
+<!-- Wedding Planning Service Page -->
+
+<!-- Corporate Events Service Page -->
+
+<!-- Birthday Parties Service Page -->
+
+<!-- Services Page -->
+
+<!-- About Us Page -->
+
+<!-- Contact Us Page -->
+
+<!-- Booking Page -->
