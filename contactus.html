@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Dhaka Event Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Poppins', sans-serif; } </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Shared Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-gray-900">Event<span class="text-red-600">Planner</span></a>
+            <div class="hidden md:flex items-center space-x-8 font-medium text-gray-600">
+                <a href="index.html" class="hover:text-red-600">Home</a>
+                <a href="about.html" class="hover:text-red-600">About Us</a>
+                <a href="services.html" class="hover:text-red-600">Services</a>
+                <a href="gallery.html" class="hover:text-red-600">Gallery</a>
+                <a href="contact.html" class="text-red-600 font-bold">Contact</a>
+            </div>
+            <a href="#" class="hidden md:inline-block bg-red-600 text-white font-bold py-2 px-6 rounded-full hover:bg-red-700 transition duration-300">Get a Quote</a>
+            <div class="md:hidden"><button class="text-gray-800">☰</button></div>
+        </div>
+    </nav>
+
+    <!-- 1. Page Header -->
+    <header class="relative h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1596524430615-b46475ddff6e?q=80&w=2070');">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold">Contact Us</h1>
+            <p class="mt-2 text-lg">Home / Contact</p>
+        </div>
+    </header>
+
+    <main class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Left Side: Contact Info -->
+                <div>
+                    <h2 class="text-3xl font-extrabold text-gray-900">Get In Touch</h2>
+                    <p class="mt-2 text-gray-600">We'd love to hear from you! Reach out to us for a free consultation.</p>
+                    <ul class="mt-8 space-y-6 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="mt-1 mr-4 text-red-600">📍</span>
+                            <div>
+                                <h3 class="font-bold">Our Office</h3>
+                                <p>123 Event Lane, Gulshan, Dhaka 1212, Bangladesh</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mt-1 mr-4 text-red-600">✉️</span>
+                            <div>
+                                <h3 class="font-bold">Email Us</h3>
+                                <p>info@dhakaeventplanner.com</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                             <span class="mt-1 mr-4 text-red-600">📞</span>
+                            <div>
+                                <h3 class="font-bold">Call Us</h3>
+                                <p>+880 1234 567890</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right Side: Contact Form -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <form action="#" method="POST">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500">
+                            <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500">
+                        </div>
+                        <div class="mt-6">
+                            <input type="text" name="subject" placeholder="Subject" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500">
+                        </div>
+                        <div class="mt-6">
+                            <textarea name="message" rows="5" placeholder="Your Message" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        </div>
+                        <div class="mt-6">
+                            <button type="submit" class="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-md hover:bg-red-700 transition duration-300">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="mt-20">
+                <h2 class="text-center text-3xl font-extrabold text-gray-900 mb-8">Find Us On The Map</h2>
+                <!-- Replace this div with your Google Maps iframe embed code -->
+                <div class="bg-gray-300 h-96 rounded-lg shadow-md flex items-center justify-center text-gray-600">
+                    Google Maps Embed Goes Here
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <!-- Footer content from homepage goes here -->
+        <div class="bg-black text-gray-500 text-center py-4 text-sm">
+            <p>© 2024 EventPlanner. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+<--Contact us-->
+    <main id="contact-page">
+    <!-- Page Header -->
+    <header class="relative h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1596524430615-b46475ddff6e?q=80&w=2070');">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold">Contact Us</h1>
+            <p class="mt-2 text-lg">Home / Contact</p>
+        </div>
+    </header>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <!-- Display Success Message -->
+            <?php if (isset($_SESSION['success_message'])): ?>
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <span class="block sm:inline"><?php echo $_SESSION['success_message']; ?></span>
+                </div>
+                <?php unset($_SESSION['success_message']); ?>
+            <?php endif; ?>
+
+            <!-- Display Error Messages -->
+            <?php if (isset($_SESSION['error_messages'])): ?>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <strong class="font-bold">Error!</strong>
+                    <ul class="mt-1">
+                        <?php foreach ($_SESSION['error_messages'] as $error): ?>
+                            <li class="block sm:inline"><?php echo $error; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <?php unset($_SESSION['error_messages']); ?>
+            <?php endif; ?>
+
+            <!-- Contact Form -->
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <form action="process_contact.php" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500">
+                        <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500">
+                    </div>
+                    <div class="mt-6">
+                        <input type="text" name="subject" placeholder="Subject" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500">
+                    </div>
+                    <div class="mt-6">
+                        <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                    </div>
+                    <div class="mt-6">
+                        <button type="submit" name="submit" class="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-md hover:bg-red-700 transition duration-300">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                <!-- Map Section -->
+            <div class="mt-20">
+                <h2 class="text-center text-3xl font-extrabold text-gray-900 mb-8">Find Us On The Map</h2>
+                
+                <!-- START: Google Maps Embed -->
+                <div class="rounded-lg shadow-md overflow-hidden">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.892161471373!2d90.4131610759881!3d23.78696088746533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7a097dcb989%3A0x4933339a68617865!2sEmbassy%20of%20the%20United%20States%20of%20America!5e0!3m2!1sen!2sbd!4v1701077591748!5m2!1sen!2sbd" 
+                        width="100%" 
+                        height="384" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <!-- END: Google Maps Embed -->
+                
+            </div>
+        </div>
+            </div>
+        </div>
+    </section>
+</main>
+ 
