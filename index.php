@@ -441,6 +441,57 @@ $user_name = $is_logged_in ? $_SESSION['user_name'] : ''; // Get the username if
 
 
 <!-- Gallery Page -->
+ <!-- Gallery Page -->
+<main id="gallery-page">
+    <!-- Page Header -->
+    <header class="relative h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=2070');">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold">Our Gallery</h1>
+            <p class="mt-2 text-lg">Home / Gallery</p>
+        </div>
+    </header>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <!-- Filter Buttons -->
+            <div class="flex justify-center space-x-2 md:space-x-4 mb-12">
+                <button class="bg-red-600 text-white font-semibold py-2 px-6 rounded-full">All</button>
+                <button class="bg-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-full hover:bg-red-600 hover:text-white">Weddings</button>
+                <button class="bg-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-full hover:bg-red-600 hover:text-white">Corporate</button>
+                <button class="bg-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-full hover:bg-red-600 hover:text-white">Parties</button>
+            </div>
+
+            <!-- Image Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Image Item 1 -->
+                <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://w0.peakpx.com/wallpaper/491/578/HD-wallpaper-wedding-work-kwpeventskochi-events-stagedecoration-weddingworks-marriagedecoration.jpg" alt="Wedding Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 2 -->
+                <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29ycG9yYXRlJTIwZXZlbnRzfGVufDB8fDB8fHww" alt="Corporate Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 3 -->
+                <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1974" alt="Party Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 4 -->
+                <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=1974" alt="Concert Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 5 -->
+                 <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29uZmVyZW5jZSUyMGhhbGx8ZW58MHx8MHx8fDA%3D" alt="Conference Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+                <!-- Image Item 6 -->
+                 <div class="group overflow-hidden rounded-lg shadow-lg h-80">
+                    <img src="https://media.istockphoto.com/id/1411971240/photo/wine-and-champain-glass-in-luxury-weddings-and-events.jpg?s=612x612&w=0&k=20&c=YVSlq0UuN0rpB252gO77eKcqc5DI0aNRQZI8lTSAZhY=" alt="Dinner Event" class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
 <!-- Wedding Planning Service Page -->
 
