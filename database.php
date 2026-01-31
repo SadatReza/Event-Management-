@@ -55,3 +55,22 @@ if ($_SERVER['HTTP_HOST'] == 'localhost') {
     $conn->report_mode = MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT;
 }
 ?>
+
+<?php
+// database.php
+$servername = "localhost";
+$username = "root";
+$password = ""; 
+$dbname = "event_planner_db";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Set charset to utf8mb4 for special characters
+$conn->set_charset("utf8mb4");
+?>

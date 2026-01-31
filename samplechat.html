@@ -1,0 +1,28 @@
+<!-- Floating Chat Widget -->
+<div id="chat-widget" class="fixed bottom-5 right-5 z-50">
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle"
+            class="bg-red-600 text-white rounded-full p-4 shadow-lg hover:bg-red-700 transition duration-300 relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0
+                     012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+        </svg>
+        <!-- Unread badge -->
+        <span id="unread-badge"
+              class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+            0
+        </span>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chat-window"
+         class="hidden absolute bottom-16 right-0 w-80 md:w-96 bg-white rounded-lg shadow-xl border border-red-100">
+        <!-- Chat Header -->
+        <!-- ... -->
+        <!-- Chat Messages container with id="chat-messages" -->
+        <!-- Typing indicator with id="typing-indicator" -->
+        <!-- Chat form with id="chat-form" and input id="chat-input" -->
+    </div>
+</div>

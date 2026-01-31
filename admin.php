@@ -6,10 +6,6 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     header("Location: admin_login.php");
     exit();
 }
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header("Location: admin_login.php");
-    exit();
-}
 
 require_once('database.php');
 
@@ -24,6 +20,10 @@ $users_result = mysqli_query($conn, $users_query);
 // Get all contact messages
 $messages_query = "SELECT * FROM contact_submissions ORDER BY created_at DESC";
 $messages_result = mysqli_query($conn, $messages_query);
+
+// Get all chat messages from chat_messages table
+$chat_query = "SELECT * FROM chat_messages ORDER BY created_at DESC";
+$chat_result = mysqli_query($conn, $chat_query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +80,16 @@ $messages_result = mysqli_query($conn, $messages_query);
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
-                        Messages
+                        Contact Messages
+                    </span>
+                </a>
+                <!-- ADD CHAT MESSAGES NAV ITEM -->
+                <a href="#chat-messages" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    <span class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                        Chat Messages
                     </span>
                 </a>
                 <a href="admin_logout.php" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
@@ -116,7 +125,7 @@ $messages_result = mysqli_query($conn, $messages_query);
                 <!-- Dashboard Overview -->
                 <div id="dashboard">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6">Overview</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                         <!-- Total Bookings Card -->
                         <div class="bg-white rounded-lg shadow-md p-6 dashboard-card">
                             <div class="flex items-center justify-between">
@@ -161,7 +170,7 @@ $messages_result = mysqli_query($conn, $messages_query);
                         <div class="bg-white rounded-lg shadow-md p-6 dashboard-card">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <p class="text-gray-500">Total Messages</p>
+                                    <p class="text-gray-500">Contact Messages</p>
                                     <h3 class="text-2xl font-bold mt-2">
                                         <?php 
                                         $total_messages = mysqli_num_rows($messages_result);
@@ -172,6 +181,26 @@ $messages_result = mysqli_query($conn, $messages_query);
                                 <div class="bg-green-100 p-3 rounded-full">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- CHAT MESSAGES CARD -->
+                        <div class="bg-white rounded-lg shadow-md p-6 dashboard-card">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-500">Chat Messages</p>
+                                    <h3 class="text-2xl font-bold mt-2">
+                                        <?php 
+                                        $total_chat = mysqli_num_rows($chat_result);
+                                        echo $total_chat;
+                                        ?>
+                                    </h3>
+                                </div>
+                                <div class="bg-purple-100 p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                                     </svg>
                                 </div>
                             </div>
@@ -409,6 +438,99 @@ $messages_result = mysqli_query($conn, $messages_query);
                         </table>
                     </div>
                 </div>
+
+                <!-- CHAT MESSAGES SECTION -->
+                <div id="chat-messages" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">Chat Messages</h2>
+                        <div class="flex space-x-2">
+                            <select id="chat-filter" class="border border-gray-300 rounded-md px-3 py-1 text-sm">
+                                <option value="all">All Messages</option>
+                                <option value="customer">From Customers</option>
+                                <option value="admin">From Admin</option>
+                                <option value="unread">Unread</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <?php if (mysqli_num_rows($chat_result) > 0): ?>
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message Type</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <?php 
+                                mysqli_data_seek($chat_result, 0); // Reset pointer to start
+                                while ($chat = mysqli_fetch_assoc($chat_result)): 
+                                    $status_class = $chat['is_read'] == 1 ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800';
+                                    $status_text = $chat['is_read'] == 1 ? 'Read' : 'Unread';
+                                    
+                                    $type_class = '';
+                                    if ($chat['message_type'] == 'customer') {
+                                        $type_class = 'bg-blue-100 text-blue-800';
+                                    } elseif ($chat['message_type'] == 'admin') {
+                                        $type_class = 'bg-purple-100 text-purple-800';
+                                    } else {
+                                        $type_class = 'bg-gray-100 text-gray-800';
+                                    }
+                                    
+                                    // Check if message is from customer or admin based on agent_id
+                                    $user_type = $chat['agent_id'] ? 'admin' : 'customer';
+                                ?>
+                                <tr class="chat-row" data-type="<?php echo $user_type; ?>" data-read="<?php echo $chat['is_read']; ?>">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900"><?php echo htmlspecialchars($chat['user_name']); ?></div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900"><?php echo htmlspecialchars($chat['user_email']); ?></div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <?php echo $type_class; ?>">
+                                            <?php echo ucfirst(htmlspecialchars($chat['message_type'])); ?>
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900 truncate max-w-xs">
+                                            <?php echo htmlspecialchars($chat['message']); ?>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <?php echo date('M d, Y H:i', strtotime($chat['created_at'])); ?>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <?php echo $status_class; ?>">
+                                            <?php echo $status_text; ?>
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button onclick="openChatReply('<?php echo $chat['user_email']; ?>', '<?php echo htmlspecialchars($chat['user_name']); ?>')" 
+                                                class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+                                            Reply
+                                        </button>
+                                    </td>
+                                </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                        <?php else: ?>
+                        <div class="p-8 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                            </svg>
+                            <p class="text-gray-500">No chat messages yet.</p>
+                            <p class="text-gray-400 text-sm mt-2">When users send messages through the chat system, they will appear here.</p>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -486,7 +608,7 @@ $messages_result = mysqli_query($conn, $messages_query);
                 const target = this.getAttribute('href').substring(1);
                 
                 // Hide all sections
-                document.querySelectorAll('#dashboard, #bookings, #users, #messages').forEach(section => {
+                document.querySelectorAll('#dashboard, #bookings, #users, #messages, #chat-messages').forEach(section => {
                     section.classList.add('hidden');
                 });
                 
@@ -504,6 +626,34 @@ $messages_result = mysqli_query($conn, $messages_query);
                 } else {
                     row.style.display = 'none';
                 }
+            });
+        });
+        
+        // Filter chat messages
+        document.getElementById('chat-filter').addEventListener('change', function() {
+            const filter = this.value;
+            document.querySelectorAll('.chat-row').forEach(row => {
+                const messageType = row.getAttribute('data-type');
+                const isRead = row.getAttribute('data-read');
+                
+                let show = true;
+                
+                switch(filter) {
+                    case 'customer':
+                        show = messageType === 'customer';
+                        break;
+                    case 'admin':
+                        show = messageType === 'admin';
+                        break;
+                    case 'unread':
+                        show = isRead == '0';
+                        break;
+                    case 'all':
+                    default:
+                        show = true;
+                }
+                
+                row.style.display = show ? '' : 'none';
             });
         });
         
@@ -564,47 +714,14 @@ $messages_result = mysqli_query($conn, $messages_query);
             // Handle hash on page load
             if (window.location.hash) {
                 const target = window.location.hash.substring(1);
-                document.querySelectorAll('#dashboard, #bookings, #users, #messages').forEach(section => {
+                document.querySelectorAll('#dashboard, #bookings, #users, #messages, #chat-messages').forEach(section => {
                     section.classList.add('hidden');
                 });
                 document.getElementById(target).classList.remove('hidden');
             }
-            // Update the booking status using AJAX
-function updateBookingStatus(bookingIdentifier, newStatus) {
-    // Send the status update request via AJAX
-    fetch('update_booking_status.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-            'booking_identifier': bookingIdentifier,
-            'new_status': newStatus
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Find the booking row and update the status text
-            let bookingRow = document.querySelector(`[data-identifier="${bookingIdentifier}"]`);
-            let statusCell = bookingRow.querySelector('.status-cell');
-            statusCell.innerHTML = data.newStatus; // Update the status in the UI
-
-            // Optionally, you can change the button based on the new status
-            let actionCell = bookingRow.querySelector('.action-cell');
-            actionCell.innerHTML = `<button onclick="updateBookingStatus('${bookingIdentifier}', '${newStatus === 'Pending' ? 'Confirmed' : 'Completed'}')">Confirm</button>`;
-        } else {
-            alert('Failed to update status. Please try again.');
-        }
-    })
-    .catch(error => {
-        console.error('Error updating booking status:', error);
-        alert('Error updating status. Please try again.');
-    });
-}
-
         });
     </script>
+    
     <script>
     // Enhanced logout function
     document.querySelector('a[href="admin_logout.php"]').addEventListener('click', function(e) {
@@ -621,7 +738,136 @@ function updateBookingStatus(bookingIdentifier, newStatus) {
                 window.location.href = 'admin_login.php';
             });
     });
+    </script>
+
+    <div id="admin-chat-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+    <div class="relative top-10 mx-auto border w-11/12 md:w-1/2 shadow-lg rounded-md bg-white flex flex-col h-[500px]">
+        <div class="flex justify-between items-center border-b p-4 bg-gray-50">
+            <div>
+                <h3 class="text-xl font-bold text-gray-800">Chat with <span id="chat-user-name">User</span></h3>
+                <p class="text-xs text-gray-500" id="chat-user-email">email@example.com</p>
+            </div>
+            <button onclick="closeModal('admin-chat-modal')" class="text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        
+        <div id="admin-chat-history" class="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-100">
+            <div class="text-center text-gray-500 mt-10">Loading conversation...</div>
+        </div>
+        
+        <div class="border-t p-4 bg-white">
+            <div class="flex space-x-2">
+                <input type="text" id="admin-reply-input" 
+                       class="flex-1 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                       placeholder="Type your reply here..."
+                       onkeypress="if(event.key === 'Enter') sendAdminReply()">
+                <button onclick="sendAdminReply()" 
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium">
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentChatEmail = '';
+let currentChatName = '';
+
+function openChatReply(email, name) {
+    currentChatEmail = email;
+    currentChatName = name;
+    
+    document.getElementById('chat-user-name').textContent = name;
+    document.getElementById('chat-user-email').textContent = email;
+    
+    // Show modal
+    document.getElementById('admin-chat-modal').classList.remove('hidden');
+    
+    // Fetch history
+    loadChatHistory();
+    
+    // Start polling for new messages while modal is open
+    if(window.chatInterval) clearInterval(window.chatInterval);
+    window.chatInterval = setInterval(loadChatHistory, 3000); // Poll every 3 seconds
+}
+
+function loadChatHistory() {
+    if(!currentChatEmail) return;
+    
+    const formData = new FormData();
+    formData.append('action', 'fetch_conversation');
+    formData.append('email', currentChatEmail);
+    
+    fetch('admin_chat_handler.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success) {
+            const chatBox = document.getElementById('admin-chat-history');
+            let html = '';
+            
+            data.messages.forEach(msg => {
+                const isAgent = (msg.message_type === 'admin');
+                const align = isAgent ? 'justify-end' : 'justify-start';
+                const bg = isAgent ? 'bg-blue-600 text-white' : 'bg-white text-gray-800 border';
+                const label = isAgent ? 'You' : msg.user_name;
+                
+                html += `
+                    <div class="flex ${align}">
+                        <div class="max-w-xs md:max-w-md">
+                            <div class="text-xs text-gray-500 mb-1 ${isAgent ? 'text-right' : 'text-left'}">${label}</div>
+                            <div class="${bg} px-4 py-2 rounded-lg shadow-sm">
+                                ${msg.message}
+                            </div>
+                            <div class="text-xs text-gray-400 mt-1 ${isAgent ? 'text-right' : 'text-left'}">
+                                ${new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            chatBox.innerHTML = html;
+            // Scroll to bottom
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    });
+}
+
+function sendAdminReply() {
+    const input = document.getElementById('admin-reply-input');
+    const message = input.value.trim();
+    
+    if(!message) return;
+    
+    const formData = new FormData();
+    formData.append('action', 'send_reply');
+    formData.append('email', currentChatEmail);
+    formData.append('user_name', currentChatName);
+    formData.append('message', message);
+    
+    fetch('admin_chat_handler.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success) {
+            input.value = ''; // Clear input
+            loadChatHistory(); // Refresh chat immediately
+        } else {
+            alert('Error sending message');
+        }
+    });
+}
 </script>
 
 </body>
 </html>
+[file content end]

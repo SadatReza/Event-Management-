@@ -1,0 +1,51 @@
+SESSION: Array
+(
+    [logged_in] => 1
+    [user_name] => Ziaul Haque Polash
+)
+
+POST: Array
+(
+    [event_type] => corporate
+    [event_date] => 2025-06-30
+    [guests] => 1000
+    [package] => standard
+    [venue] => hey
+    [budget] => 1000000
+    [special_requests] => jueu
+)
+
+Attempting to insert: Array
+(
+    [email] => 
+    [event_type] => 
+    [package] => 
+    [event_date] => 
+    [venue] => 
+    [guests] => 
+    [budget] => 
+    [requests] => 
+)
+
+SESSION: Array
+(
+    [logged_in] => 1
+    [user_name] => Ziaul Haque Polash
+)
+
+POST: Array
+(
+)
+
+Attempting to insert: Array
+(
+    [email] => 
+    [event_type] => 
+    [package] => 
+    [event_date] => 
+    [venue] => 
+    [guests] => 
+    [budget] => 
+    [requests] => 
+)
+
